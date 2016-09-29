@@ -106,7 +106,7 @@ function selectUnvisitedNeighbor(coord, arr){
     });
     
     if (returnOptions.length === 0){
-        // All possible moves will create a new partition, mae
+        // All possible moves will create a new partition
         return safestMove(unvisitedNeighbors, arr);
     }
         
