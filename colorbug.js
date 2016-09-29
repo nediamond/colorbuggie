@@ -60,7 +60,7 @@ function runBuggie(){
 
 document.onclick = function(){
     if (bugAt == null)
-        location.reload();
+        refresh();
 }
 
 function resize() {
@@ -255,4 +255,12 @@ function totalUnvisited(arr){
 
 function random_choice(arr){
     return arr[Math.floor(Math.random()*arr.length)];
+}
+
+
+function refresh(){
+    $('body').empty();
+    bugAt = [Math.ceil((numBuggiesH/2-1)),Math.floor(numBuggiesW/2)];
+    initBuggie();
+    runBuggie();
 }
