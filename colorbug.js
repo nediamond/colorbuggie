@@ -1,5 +1,14 @@
-let numBuggiesW = 15;
-let numBuggiesH = 13;
+let numBuggiesW, numBuggiesH;
+if (window.innerWidth > window.innerHeight){
+    // Assuming regular pc screen
+    numBuggiesW = 13;
+    numBuggiesH = 11;
+} else {
+    // Assuming mobile screen
+    numBuggiesW = 5;
+    numBuggiesH = 7;
+}
+
 let COLOR_CHOICES = ['blue','purple','green','red','orange'];
 var visited = [];
 var bugAt = [Math.ceil((numBuggiesH/2-1)),Math.floor(numBuggiesW/2)];
@@ -7,7 +16,7 @@ var bugAt = [Math.ceil((numBuggiesH/2-1)),Math.floor(numBuggiesW/2)];
 $( document ).ready(function() {
     resize();
     window.onresize = resize;
-    
+
     initBuggie();
     runBuggie();
 });
@@ -58,10 +67,16 @@ function runBuggie(){
     })();
 }
 
-document.onclick = function(){
-    if (bugAt == null)
-        refresh();
-}
+document.addEventListener('click', function(){
+if (bugAt == null)
+    refresh();
+});
+
+document.addEventListener('touchstart', function(){
+if (bugAt == null)
+    refresh();
+});
+
 
 function resize() {
     document.body.style.width = window.innerWidth + 'px';
