@@ -7,3 +7,5 @@ Essentially, it is a semi-intelligent, semi-random color path which walks around
 2. Of those neighbors, find the ones where moving to that position will not create a new partition of empty spaces.
 3. If such neighbors exist, select a random one, move there, and restart algorithm. Else, continue to step 4.
 4. Find the neighboring space for which moving there will create the largest partition, move there, and then move into the newly created largest partition. Restart algorithm.
+
+Try out it at nediamond.github.io/colorbuggie
