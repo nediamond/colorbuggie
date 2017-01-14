@@ -164,8 +164,8 @@ function safestMove(coordList, arr){
 }
 
 
+// Returns [] if coord has no unvisited neighbors
 function getUnvisitedNeighbors(coord, arr){
-    // Returns [] if coord has no unvisited neighbors
     var x = coord[0], y = coord[1];
     var returnOptions = [];
     
