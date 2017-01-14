@@ -129,8 +129,8 @@ function selectUnvisitedNeighbor(coord, arr){
 }
 
 
-function safestMove(coordList, arr){
-    // Returns move which creates the largest partition and visits all smaller partitions
+// Returns move which creates the largest partition and visits all smaller partitions
+function safestMove(coordList, arr){ 
     var partsLists = []
     for (var i = 0; i < coordList.length; i++){
         let coord = coordList[i];
@@ -186,8 +186,8 @@ function getUnvisitedNeighbors(coord, arr){
 }
 
 
+// Returns true if visiting coord in arr will not create a new partition
 function stillConnected(coord, arr){
-    // Returns true if visiting coord in arr will not create a new partition
     var arr_cp = deepCopy(arr);
 
     arr_cp[coord[0]][coord[1]] = true;
@@ -221,10 +221,9 @@ function getFirstUnvisited(arr){
 }
 
 
+//  Visits all unvisited cells in arr which are connected to coord
+//  Returns count of cells visited
 function numUnvisitedConnected(coord, arr){
-    //  Vistits all unvisited cells in arr which are connected to coord
-    //  Returns count of cells visited
-
     if (arr[coord[0]][coord[1]])
         return 0;
     
@@ -240,9 +239,9 @@ function numUnvisitedConnected(coord, arr){
 }
 
 
+// Returns array of partition objects in form {'x':int, 'y':int, 'size':int}
+//         where x and y represent a coordinate in the partition
 function getPartitionsAndSizes(arr){
-    // Returns array of partition objects in form {'x':int, 'y':int, 'size':int}
-    //         where x and y represent a coordinate in the partition
     var arr_cp = deepCopy(arr);
 
     var firstUnvisited = getFirstUnvisited(arr_cp);
