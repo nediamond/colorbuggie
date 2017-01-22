@@ -6,7 +6,7 @@ if (window.innerWidth > window.innerHeight){
 } else {
     // Assuming mobile screen
     numBuggiesW = 7;
-    numBuggiesH = 9;
+    numBuggiesH = 10;
 }
 
 let COLOR_CHOICES = ['blue','purple','green','red','orange'];
