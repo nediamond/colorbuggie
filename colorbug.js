@@ -51,9 +51,12 @@ function runBuggie(){
     
     var count = 0;
     (function loop() {
-        if (bugAt == null){
-            return;
-        }
+        if (bugAt == null && count < 20){
+            count++;
+            requestAnimationFrame(loop);
+        } 
+        if (bugAt == null && count >= 20)
+            refresh();
         if (count < 3) {
             // Making sure framerate is not too high
             count++;
