@@ -51,13 +51,13 @@ function runBuggie(){
     
     var count = 0;
     (function loop() {
-        // Give twenty frames at end and then restart
-        if (bugAt == null && count < 20){
+        // Give 150 frames at end and then restart
+        if (bugAt == null && count < 150){
             count++;
             requestAnimationFrame(loop);
             return;
         } 
-        if (bugAt == null && count >= 20){
+        if (bugAt == null && count >= 150){
             refresh();
             return;
         }
