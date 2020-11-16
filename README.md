@@ -8,4 +8,4 @@ Essentially, it is a semi-intelligent, semi-random color path which walks around
 3. If such neighbors exist, select a random one, move there, and restart algorithm. Else, continue to step 4.
 4. Find the neighboring space for which moving there will create the largest partition, move there, and then move into the newly created largest partition. Restart algorithm.
 
-Try it out [here](https://nediamond.github.io/colorbuggie/)
+Try it out [here](https://www.colorbuggie.com/)
