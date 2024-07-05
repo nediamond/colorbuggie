@@ -21,7 +21,7 @@ window.addEventListener("load", function() {
     window.onresize = resize;
 
     initBuggie();
-    requestAnimationFrame(runBuggie);
+    runBuggie();
 });
 
 
@@ -51,7 +51,7 @@ function initBuggie(){
 
 function runBuggie(){
     visited[bugAt[0]][bugAt[1]]=true;
-    addBuggie(bugAt);
+    requestAnimationFrame(() => addBuggie(bugAt));
     
     (function loop() {
         bugAt = selectUnvisitedNeighbor(bugAt, visited);
@@ -61,7 +61,7 @@ function runBuggie(){
         }
 
         setTimeout(() => {
-            addBuggie(bugAt);
+            requestAnimationFrame(() => addBuggie(bugAt));
             return loop();
         }, STEP_TIME_MS);
     })();
