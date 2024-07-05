@@ -16,7 +16,7 @@ let COLOR_CHOICES = ['blue','purple','green','red','orange'];
 var visited = [];
 var bugAt = [Math.ceil((numBuggiesH/2-1)),Math.floor(numBuggiesW/2)];
 
-$( document ).ready(function() {
+$( window ).on('load', function() {
     resize();
     window.onresize = resize;
 
@@ -62,7 +62,7 @@ function runBuggie(){
 
         setTimeout(() => {
             addBuggie(bugAt);
-            return requestAnimationFrame(loop);
+            return loop();
         }, STEP_TIME_MS);
     })();
 }
