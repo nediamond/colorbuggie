@@ -16,7 +16,7 @@ let COLOR_CHOICES = ['blue','purple','green','red','orange'];
 var visited = [];
 var bugAt = [Math.ceil((numBuggiesH/2-1)),Math.floor(numBuggiesW/2)];
 
-$( window ).on('load', function() {
+window.addEventListener("load", function() {
     resize();
     window.onresize = resize;
 
