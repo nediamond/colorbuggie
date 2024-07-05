@@ -21,7 +21,7 @@ window.addEventListener("load", function() {
     window.onresize = resize;
 
     initBuggie();
-    runBuggie();
+    requestAnimationFrame(runBuggie);
 });
 
 
