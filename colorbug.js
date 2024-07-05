@@ -1,3 +1,6 @@
+const STEP_TIME_MS = 100;
+const END_WAIT_TIME_MS = 2500;
+
 let numBuggiesW, numBuggiesH;
 if (window.innerWidth > window.innerHeight){
     // Assuming regular pc screen
@@ -48,42 +51,25 @@ function initBuggie(){
 
 function runBuggie(){
     visited[bugAt[0]][bugAt[1]]=true;
+    addBuggie(bugAt);
     
-    var count = 0;
     (function loop() {
-        // Give 150 frames at end and then restart
-        if (bugAt == null && count < 150){
-            count++;
-            requestAnimationFrame(loop);
-            return;
-        } 
-        if (bugAt == null && count >= 150){
-            refresh();
-            return;
-        }
-        
-        if (count < 3) {
-            // Making sure framerate is not too high
-            count++;
-            requestAnimationFrame(loop);
-            return;
-        }
-        count = 0;
-        addBuggie(bugAt);
         bugAt = selectUnvisitedNeighbor(bugAt, visited);
-        requestAnimationFrame(loop);
+
+        if (bugAt == null) {
+            return setTimeout(() => window.location.reload(), END_WAIT_TIME_MS);
+        }
+
+        setTimeout(() => {
+            addBuggie(bugAt);
+            return requestAnimationFrame(loop);
+        }, STEP_TIME_MS);
     })();
 }
 
-document.addEventListener('click', function(){
-if (bugAt == null)
-    refresh();
-});
+document.addEventListener('click', () => window.location.reload());
 
-document.addEventListener('touchstart', function(){
-if (bugAt == null)
-    refresh();
-});
+document.addEventListener('touchstart', () => window.location.reload());
 
 
 function resize() {
@@ -279,10 +265,3 @@ function random_choice(arr){
     return arr[Math.floor(Math.random()*arr.length)];
 }
 
-
-function refresh(){
-    $('body').empty();
-    bugAt = [Math.ceil((numBuggiesH/2-1)),Math.floor(numBuggiesW/2)];
-    initBuggie();
-    runBuggie();
-}
